@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brivael Le Pogam - Portfolio</title>
+  <meta name="description" content="Co-Founder @ Argil (YC S24). Self-taught developer with 20 years of experience building high-scale distributed systems.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      font-family: 'JetBrains Mono', monospace;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    ::selection {
+      background-color: rgb(20 83 45);
+      color: rgb(220 252 231);
+    }
+    @keyframes pulse-cursor {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+    .cursor-blink {
+      animation: pulse-cursor 1s ease-in-out infinite;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in {
+      animation: fadeIn 0.5s ease-out forwards;
+    }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+    .delay-4 { animation-delay: 0.4s; }
+    .delay-5 { animation-delay: 0.5s; }
+    .delay-6 { animation-delay: 0.6s; }
+  </style>
+</head>
+<body>
+  <!-- Boot Sequence -->
+  <div id="boot-screen" class="min-h-screen bg-black text-green-500 font-mono p-8 flex flex-col justify-end pb-20 fixed inset-0 z-50 transition-opacity duration-500">
+    <div class="space-y-2">
+      <p class="opacity-0 fade-in delay-1">&gt; KERNEL_INIT...</p>
+      <p class="opacity-0 fade-in delay-2">&gt; LOADING_MODULES [====================] 100%</p>
+      <p class="opacity-0 fade-in delay-3">&gt; MOUNTING_FILESYSTEM...</p>
+      <p class="opacity-0 fade-in delay-4">&gt; USER_DETECTED: BRIVAEL_LE_POGAM</p>
+      <p class="opacity-0 fade-in delay-5">&gt; ACCESS_LEVEL: ROOT</p>
+      <p class="opacity-0 fade-in delay-6">&gt; LAUNCHING_INTERFACE...</p>
+      <span class="inline-block w-3 h-5 bg-green-500 cursor-blink ml-2">_</span>
+    </div>
+  </div>
+
+  <!-- Main Application -->
+  <div id="main-app" class="min-h-screen bg-[#0d1117] text-gray-300 flex flex-col md:flex-row overflow-hidden opacity-0 transition-opacity duration-500">
+    
+    <!-- Sidebar / File Explorer -->
+    <div class="w-full md:w-64 bg-[#010409] border-r border-gray-800 flex flex-col md:h-screen z-20 md:fixed">
+      <div class="p-4 flex items-center gap-2 border-b border-gray-800">
+        <div class="flex gap-1.5">
+          <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
+          <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+          <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
+        </div>
+        <span class="ml-4 text-xs font-bold text-gray-500 tracking-widest">EXPLORER</span>
+      </div>
+
+      <div class="p-2 flex-1 overflow-y-auto">
+        <div class="text-xs font-bold text-gray-500 mb-2 px-2 pt-2">BRIVAEL_PORTFOLIO</div>
+        <nav class="space-y-1">
+          <button onclick="scrollToSection('home')" data-section="home" class="nav-btn w-full flex items-center gap-2 px-3 py-2 text-sm rounded transition-all duration-200 group bg-[#1f2428] text-green-400 border-l-2 border-green-500">
+            <span class="opacity-100">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" x2="20" y1="19" y2="19"></line></svg>
+            </span>
+            ~/home
+          </button>
+          <button onclick="scrollToSection('experience')" data-section="experience" class="nav-btn w-full flex items-center gap-2 px-3 py-2 text-sm rounded transition-all duration-200 group hover:bg-[#161b22] text-gray-400 hover:text-gray-100">
+            <span class="opacity-50 group-hover:opacity-100">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+            </span>
+            ./experience.log
+          </button>
+          <button onclick="scrollToSection('projects')" data-section="projects" class="nav-btn w-full flex items-center gap-2 px-3 py-2 text-sm rounded transition-all duration-200 group hover:bg-[#161b22] text-gray-400 hover:text-gray-100">
+            <span class="opacity-50 group-hover:opacity-100">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" x2="9" y1="1" y2="4"></line><line x1="15" x2="15" y1="1" y2="4"></line><line x1="9" x2="9" y1="20" y2="23"></line><line x1="15" x2="15" y1="20" y2="23"></line><line x1="20" x2="23" y1="9" y2="9"></line><line x1="20" x2="23" y1="14" y2="14"></line><line x1="1" x2="4" y1="9" y2="9"></line><line x1="1" x2="4" y1="14" y2="14"></line></svg>
+            </span>
+            ./legacy_projects.bin
+          </button>
+          <button onclick="scrollToSection('contact')" data-section="contact" class="nav-btn w-full flex items-center gap-2 px-3 py-2 text-sm rounded transition-all duration-200 group hover:bg-[#161b22] text-gray-400 hover:text-gray-100">
+            <span class="opacity-50 group-hover:opacity-100">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" x2="22" y1="12" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+            </span>
+            ./contact.sh
+          </button>
+        </nav>
+        
+        <div class="mt-8 px-4">
+          <div class="text-xs font-bold text-gray-500 mb-2">GIT STATUS</div>
+          <div class="text-xs text-gray-500 flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
+            <span>main *</span>
+          </div>
+          <div class="text-xs text-green-600 mt-1 pl-5">
+            + YC S24 Batch
+          </div>
+        </div>
+      </div>
+
+      <div class="p-4 border-t border-gray-800 text-xs text-gray-600">
+        <p>v2.4.0-stable</p>
+      </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="flex-1 md:ml-64 h-screen overflow-y-auto relative scroll-smooth">
+      
+      <!-- Top Bar (Tab like) -->
+      <div class="sticky top-0 bg-[#0d1117]/95 backdrop-blur z-10 border-b border-gray-800 flex items-center px-4 h-12">
+        <div class="flex items-center gap-2 text-sm text-gray-400 bg-[#161b22] px-4 py-1.5 rounded-t border-t border-x border-gray-800 -mb-[1px]">
+          <span class="text-yellow-400">JS</span>
+          <span>brivael.config.js</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 hover:text-white cursor-pointer"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+        </div>
+      </div>
+
+      <!-- Code Content -->
+      <div class="p-6 md:p-12 max-w-4xl mx-auto space-y-24">
+
+        <!-- Hero Section -->
+        <section id="home" class="min-h-[80vh] flex flex-col justify-center">
+          <div class="space-y-1">
+            <p class="text-gray-500">import <span class="text-green-400">Life</span> from <span class="text-orange-300">'./reality'</span>;</p>
+            <p class="text-gray-500">const <span class="text-blue-400">Brivael</span> = <span class="text-purple-400">require</span>(<span class="text-orange-300">'hacker-mindset'</span>);</p>
+          </div>
+          
+          <div class="mt-8 border-l-2 border-gray-700 pl-6">
+            <h1 class="text-5xl md:text-7xl font-bold text-white tracking-tight mb-4">
+              Brivael Le Pogam
+            </h1>
+            <h2 class="text-2xl md:text-3xl text-gray-400 flex flex-wrap items-center gap-3">
+              <span class="text-purple-400">const</span> 
+              currentRole = 
+              <span class="text-green-400 bg-green-400/10 px-2 py-1 rounded">"Co-Founder @ Argil"</span>;
+            </h2>
+          </div>
+
+          <div class="mt-8 text-lg text-gray-400 max-w-2xl leading-relaxed">
+            <p class="mb-4">
+              <span class="text-gray-600">// Summary</span><br/>
+              Self-taught developer. Started coding at 12, launched an MMO with 50k players by 15.
+              20 years of experience building <span class="text-blue-300">high-scale distributed systems</span>.
+            </p>
+            <p class="border border-green-500/20 bg-green-500/5 p-4 rounded text-green-300">
+              <span class="mr-2 cursor-blink">_</span>
+              "Building is my native language."
+            </p>
+          </div>
+
+          <div class="mt-8 flex flex-wrap gap-4">
+            <a href="https://www.linkedin.com/in/brivael-le-pogam-bbbb7185" target="_blank" rel="noreferrer" class="flex items-center gap-2 px-4 py-2 bg-[#238636] hover:bg-[#2ea043] text-white rounded font-semibold text-sm transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+              Connect on LinkedIn
+            </a>
+            <a href="mailto:2brivael3@gmail.com" class="flex items-center gap-2 px-4 py-2 border border-gray-600 hover:border-gray-400 text-gray-300 rounded font-semibold text-sm transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+              Contact.exe
+            </a>
+          </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="space-y-8">
+          <div class="flex items-center gap-4 mb-8">
+            <span class="text-2xl font-bold text-purple-400">function</span>
+            <h2 class="text-2xl font-bold text-white">getExperience()</h2>
+            <span class="text-2xl font-bold text-gray-500">{</span>
+          </div>
+
+          <div class="space-y-12 border-l border-gray-800 ml-3 pl-8 relative">
+            
+            <!-- Argil -->
+            <div class="relative group">
+              <div class="absolute -left-[39px] top-1 w-5 h-5 bg-[#0d1117] border-2 border-green-500/50 rounded-full group-hover:border-green-400 group-hover:scale-110 transition-all"></div>
+              
+              <div class="flex flex-col md:flex-row md:items-baseline md:justify-between mb-2">
+                <h3 class="text-xl font-bold text-blue-400 group-hover:text-blue-300 transition-colors">
+                  Argil (YC S24)
+                </h3>
+                <span class="text-sm text-gray-500">2023 - Present | Paris / SF</span>
+              </div>
+              
+              <div class="text-lg text-gray-200 mb-2 font-semibold">
+                Co-Founder
+              </div>
+              
+              <p class="text-gray-400 mb-4 max-w-2xl">
+                <span class="text-gray-600 select-none mr-2">root@brivael:~$</span>
+                Building the ultimate product for content creators, powered by the world's best AI cloning models. Grow your social media brand without a camera.
+              </p>
+
+              <div class="flex flex-wrap gap-2">
+                <span class="px-2 py-1 text-xs rounded bg-gray-800 text-green-300 border border-gray-700">AI</span>
+                <span class="px-2 py-1 text-xs rounded bg-gray-800 text-green-300 border border-gray-700">Video Generation</span>
+                <span class="px-2 py-1 text-xs rounded bg-gray-800 text-green-300 border border-gray-700">Scalability</span>
+                <span class="px-2 py-1 text-xs rounded bg-gray-800 text-green-300 border border-gray-700">Product</span>
+              </div>
+            </div>
+
+            <!-- Snipets -->
+            <div class="relative group">
+              <div class="absolute -left-[39px] top-1 w-5 h-5 bg-[#0d1117] border-2 border-green-500/50 rounded-full group-hover:border-green-400 group-hover:scale-110 transition-all"></div>
+              
+              <div class="flex flex-col md:flex-row md:items-baseline md:justify-between mb-2">
+                <h3 class="text-xl font-bold text-blue-400 group-hover:text-blue-300 transition-colors">
+                  Snipets
+                </h3>
+                <span class="text-sm text-gray-500">2022 - 2023 | Paris</span>
+              </div>
+              
+              <div class="text-lg text-gray-200 mb-2 font-semibold">
+                Co-Founder
+              </div>
+              
+              <p class="text-gray-400 mb-4 max-w-2xl">
+                <span class="text-gray-600 select-none mr-2">root@brivael:~$</span>
+                Knowledge management platform built on top of GPT. Making information accessible and actionable.
+              </p>
+
+              <div class="flex flex-wrap gap-2">
+                <span class="px-2 py-1 text-xs rounded bg-gray-800 text-green-300 border border-gray-700">LLM</span>
+                <span class="px-2 py-1 text-xs rounded bg-gray-800 text-green-300 border border-gray-700">GPT-3</span>
+                <span class="px-2 py-1 text-xs rounded bg-gray-800 text-green-300 border border-gray-700">Knowledge Graph</span>
+              </div>
+            </div>
+
+            <!-- Attraqt -->
+            <div class="relative group">
+              <div class="absolute -left-[39px] top-1 w-5 h-5 bg-[#0d1117] border-2 border-green-500/50 rounded-full group-hover:border-green-400 group-hover:scale-110 transition-all"></div>
+              
+              <div class="flex flex-col md:flex-row md:items-baseline md:justify-between mb-2">
+                <h3 class="text-xl font-bold text-blue-400 group-hover:text-blue-300 transition-colors">
+                  Attraqt / Early Birds
+                </h3>
+                <span class="text-sm text-gray-500">2018 - 2021 | Paris</span>
+              </div>
+              
+              <div class="text-lg text-gray-200 mb-2 font-semibold">
+                Tech Lead
+              </div>
+              
+              <p class="text-gray-400 mb-4 max-w-2xl">
+                <span class="text-gray-600 select-none mr-2">root@brivael:~$</span>
+                AI recommendations & Search provider for top 300 EU e-commerce sites. Handling high-scale distributed systems.
+              </p>
+
+              <div class="flex flex-wrap gap-2">
+                <span class="px-2 py-1 text-xs rounded bg-gray-800 text-green-300 border border-gray-700">High-Scale</span>
+                <span class="px-2 py-1 text-xs rounded bg-gray-800 text-green-300 border border-gray-700">Distributed Systems</span>
+                <span class="px-2 py-1 text-xs rounded bg-gray-800 text-green-300 border border-gray-700">AI</span>
+                <span class="px-2 py-1 text-xs rounded bg-gray-800 text-green-300 border border-gray-700">Search</span>
+              </div>
+            </div>
+
+            <!-- G-Conquest -->
+            <div class="relative group">
+              <div class="absolute -left-[39px] top-1 w-5 h-5 bg-[#0d1117] border-2 border-green-500/50 rounded-full group-hover:border-green-400 group-hover:scale-110 transition-all"></div>
+              
+              <div class="flex flex-col md:flex-row md:items-baseline md:justify-between mb-2">
+                <h3 class="text-xl font-bold text-blue-400 group-hover:text-blue-300 transition-colors">
+                  G-Conquest
+                </h3>
+                <span class="text-sm text-gray-500">2006 - 2010 | The Internet</span>
+              </div>
+              
+              <div class="text-lg text-gray-200 mb-2 font-semibold">
+                Founder & CEO
+              </div>
+              
+              <p class="text-gray-400 mb-4 max-w-2xl">
+                <span class="text-gray-600 select-none mr-2">root@brivael:~$</span>
+                Started coding at 12. Launched this futuristic MMO browser game. Reached 50k players and ~50M page views by age 15.
+              </p>
+
+              <div class="flex flex-wrap gap-2">
+                <span class="px-2 py-1 text-xs rounded bg-gray-800 text-green-300 border border-gray-700">Vanilla JS</span>
+                <span class="px-2 py-1 text-xs rounded bg-gray-800 text-green-300 border border-gray-700">PHP</span>
+                <span class="px-2 py-1 text-xs rounded bg-gray-800 text-green-300 border border-gray-700">MySQL</span>
+                <span class="px-2 py-1 text-xs rounded bg-gray-800 text-green-300 border border-gray-700">Game Dev</span>
+              </div>
+            </div>
+          </div>
+          <div class="ml-3 text-2xl font-bold text-gray-500">}</div>
+        </section>
+
+        <!-- Stats / Skills Grid -->
+        <section id="projects" class="py-12 border-t border-gray-800">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            
+            <!-- Block 1 -->
+            <div class="bg-[#161b22] border border-gray-800 p-6 rounded hover:border-gray-600 transition-colors">
+              <div class="flex items-center justify-between mb-4">
+                <h3 class="text-orange-300 font-bold flex items-center gap-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" x2="9" y1="1" y2="4"></line><line x1="15" x2="15" y1="1" y2="4"></line><line x1="9" x2="9" y1="20" y2="23"></line><line x1="15" x2="15" y1="20" y2="23"></line><line x1="20" x2="23" y1="9" y2="9"></line><line x1="20" x2="23" y1="14" y2="14"></line><line x1="1" x2="4" y1="9" y2="9"></line><line x1="1" x2="4" y1="14" y2="14"></line></svg>
+                  Core_Skills
+                </h3>
+              </div>
+              <div class="grid grid-cols-2 gap-4">
+                <div class="space-y-1">
+                  <div class="text-xs text-gray-500">ARCHITECTURE</div>
+                  <div class="text-gray-300">Distributed Systems</div>
+                </div>
+                <div class="space-y-1">
+                  <div class="text-xs text-gray-500">LANGUAGES</div>
+                  <div class="text-gray-300">JS, Python, Go</div>
+                </div>
+                <div class="space-y-1">
+                  <div class="text-xs text-gray-500">FOCUS</div>
+                  <div class="text-gray-300">Scalability & AI</div>
+                </div>
+                <div class="space-y-1">
+                  <div class="text-xs text-gray-500">SOFT</div>
+                  <div class="text-gray-300">Leadership</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Block 2 -->
+            <div class="bg-[#161b22] border border-gray-800 p-6 rounded hover:border-gray-600 transition-colors relative overflow-hidden">
+              <div class="absolute top-0 right-0 p-2 opacity-10">
+                <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="9" y2="9"></line><line x1="4" x2="20" y1="15" y2="15"></line><line x1="10" x2="8" y1="3" y2="21"></line><line x1="16" x2="14" y1="3" y2="21"></line></svg>
+              </div>
+              <h3 class="text-green-400 font-bold mb-4 flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" x2="20" y1="19" y2="19"></line></svg>
+                Origin_Story
+              </h3>
+              <p class="text-sm text-gray-400 leading-relaxed">
+                "I launched <span class="text-white font-bold">G-Conquest</span> at 15 years old. 
+                A massive multiplayer browser game with <span class="text-white font-bold">45,000+ players</span> and 50M page views. 
+                That's where I learned that building scalable software is an art form."
+              </p>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- Footer / Contact -->
+        <section id="contact" class="pb-20">
+          <div class="border-t border-gray-800 pt-12">
+            <h2 class="text-3xl font-bold text-white mb-8">Let's Build.</h2>
+            
+            <div class="bg-black/50 border border-green-500/30 p-4 rounded text-sm mb-8">
+              <p class="text-gray-500 mb-2">// Send a packet</p>
+              <div class="flex items-center gap-2">
+                <span class="text-green-500">➜</span>
+                <span class="text-white">ping 2brivael3@gmail.com</span>
+              </div>
+              <div class="flex items-center gap-2 mt-1">
+                <span class="text-gray-500">64 bytes from 2brivael3@gmail.com: icmp_seq=1 ttl=128 time=14.2 ms</span>
+              </div>
+            </div>
+
+            <div class="flex flex-wrap gap-6 text-gray-400">
+              <a href="https://www.linkedin.com/in/brivael-le-pogam-bbbb7185" target="_blank" rel="noreferrer" class="hover:text-white transition-colors flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                LinkedIn
+              </a>
+              <span class="text-gray-700">|</span>
+              <span class="flex items-center gap-2">
+                <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                Open to interesting conversations
+              </span>
+            </div>
+          </div>
+          
+          <div class="mt-20 text-center text-xs text-gray-600">
+            <p>BUILT WITH HTML & TAILWIND_CSS</p>
+            <p>COPYRIGHT © <span id="current-year"></span> BRIVAEL_LE_POGAM</p>
+          </div>
+        </section>
+
+      </div>
+    </div>
+    
+  </div>
+
+  <script>
+    // Set current year
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+
+    // Boot sequence
+    setTimeout(() => {
+      const bootScreen = document.getElementById('boot-screen');
+      const mainApp = document.getElementById('main-app');
+      
+      bootScreen.style.opacity = '0';
+      mainApp.style.opacity = '1';
+      
+      setTimeout(() => {
+        bootScreen.style.display = 'none';
+      }, 500);
+    }, 2500);
+
+    // Navigation
+    function scrollToSection(id) {
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+        updateActiveNav(id);
+      }
+    }
+
+    function updateActiveNav(activeId) {
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+        const section = btn.getAttribute('data-section');
+        const icon = btn.querySelector('span');
+        
+        if (section === activeId) {
+          btn.className = 'nav-btn w-full flex items-center gap-2 px-3 py-2 text-sm rounded transition-all duration-200 group bg-[#1f2428] text-green-400 border-l-2 border-green-500';
+          icon.className = 'opacity-100';
+        } else {
+          btn.className = 'nav-btn w-full flex items-center gap-2 px-3 py-2 text-sm rounded transition-all duration-200 group hover:bg-[#161b22] text-gray-400 hover:text-gray-100';
+          icon.className = 'opacity-50 group-hover:opacity-100';
+        }
+      });
+    }
+
+    // Scroll spy
+    const sections = ['home', 'experience', 'projects', 'contact'];
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          updateActiveNav(entry.target.id);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    sections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+  </script>
+</body>
+</html>
+

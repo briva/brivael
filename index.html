@@ -102,32 +102,33 @@
         <main class="relative z-20 md:ml-16 mb-20 md:mb-0">
             
             <!-- TOP BAR -->
-            <div class="sticky top-0 z-30 bg-[#050505]/80 backdrop-blur border-b border-white/5 h-12 flex items-center px-6 text-xs font-mono">
-                <div class="flex items-center gap-1 text-gray-500 mr-4">
+            <div class="sticky top-0 z-30 bg-[#050505]/80 backdrop-blur border-b border-white/5 h-12 flex items-center px-4 md:px-6 text-xs font-mono">
+                <div class="flex items-center gap-1 text-gray-500 mr-2 md:mr-4">
                     <i data-lucide="terminal" class="w-3 h-3"></i>
-                    <span>brivael@macbook-pro:~</span>
+                    <span class="hidden sm:inline">brivael@macbook-pro:~</span>
+                    <span class="sm:hidden">~</span>
                 </div>
                 <div class="flex h-full mt-2">
-                    <div class="px-4 bg-[#111]/50 border-t-2 border-emerald-500 text-gray-200 flex items-center gap-2 h-10 rounded-t border-x border-white/5">
-                        <span class="text-blue-400">⚛</span> profile.jsx
+                    <div class="px-2 md:px-4 bg-[#111]/50 border-t-2 border-emerald-500 text-gray-200 flex items-center gap-1 md:gap-2 h-10 rounded-t border-x border-white/5">
+                        <span class="text-blue-400">⚛</span> <span class="hidden sm:inline">profile.jsx</span><span class="sm:hidden">profile</span>
                     </div>
-                    <div class="px-4 opacity-50 flex items-center gap-2 h-10 border-b border-white/5 hover:bg-white/5 cursor-pointer transition-colors" onclick="scrollToSection('work')">
+                    <div class="hidden sm:flex px-4 opacity-50 items-center gap-2 h-10 border-b border-white/5 hover:bg-white/5 cursor-pointer transition-colors" onclick="scrollToSection('work')">
                         <span class="text-yellow-400">{}</span> history.json
                     </div>
                 </div>
-                <div class="ml-auto flex items-center gap-4 text-gray-600">
-                    <div class="flex items-center gap-2">
+                <div class="ml-auto flex items-center gap-2 md:gap-4 text-gray-600">
+                    <div class="flex items-center gap-1 md:gap-2">
                         <div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
-                        <span>Server Online</span>
+                        <span class="hidden sm:inline">Server Online</span>
                     </div>
-                    <span>UTF-8</span>
+                    <span class="hidden md:inline">UTF-8</span>
                 </div>
             </div>
 
-            <div class="max-w-5xl mx-auto px-6 py-20">
+            <div class="max-w-5xl mx-auto px-4 md:px-6 py-12 md:py-20">
                 
                 <!-- HERO SECTION -->
-                <section id="home" class="min-h-[80vh] flex flex-col justify-center relative section-spy">
+                <section id="home" class="min-h-[70vh] md:min-h-[80vh] flex flex-col justify-center relative section-spy">
                     <div class="absolute top-0 right-0 p-4 font-mono text-xs text-emerald-900 select-none hidden lg:block text-right">
                         <div>import UP_TIME from 'life';</div>
                         <div>import EXPERIENCE from 'work';</div>
@@ -140,16 +141,16 @@
                             Signal detected: Y Combinator S24
                         </div>
                         
-                        <h1 class="text-5xl md:text-8xl font-bold tracking-tighter text-white leading-none mix-blend-difference">
-                            <span class="text-gray-600 font-mono text-4xl md:text-6xl mr-4 opacity-50">&gt;</span>
+                        <h1 class="text-4xl sm:text-5xl md:text-8xl font-bold tracking-tighter text-white leading-none mix-blend-difference">
+                            <span class="text-gray-600 font-mono text-3xl sm:text-4xl md:text-6xl mr-2 md:mr-4 opacity-50">&gt;</span>
                             <span id="typewriter-text" class="relative inline-block group">
                                 <!-- Text injected via JS -->
                             </span>
-                            <span class="inline-block w-3 h-12 md:h-16 bg-emerald-500 ml-1 animate-blink"></span>
+                            <span class="inline-block w-2 md:w-3 h-10 md:h-16 bg-emerald-500 ml-1 animate-blink"></span>
                         </h1>
 
-                        <div class="max-w-2xl mt-8 pl-6 border-l-2 border-gray-800 bg-black/20 backdrop-blur-sm p-4 rounded-r">
-                            <p class="text-xl text-gray-300 font-light font-mono leading-relaxed">
+                        <div class="max-w-2xl mt-6 md:mt-8 pl-4 md:pl-6 border-l-2 border-gray-800 bg-black/20 backdrop-blur-sm p-3 md:p-4 rounded-r">
+                            <p class="text-base md:text-xl text-gray-300 font-light font-mono leading-relaxed">
                                 <span class="text-blue-400">class</span> <span class="text-yellow-200">Brivael</span> <span class="text-blue-400">extends</span> <span class="text-emerald-400">Founder</span> <span class="text-gray-500">{</span><br/>
                                 &nbsp;&nbsp;20 years building scalable distributed systems.<br/>
                                 &nbsp;&nbsp;From scrappy startups to scale-ups.<br/>
@@ -158,11 +159,11 @@
                             </p>
                         </div>
 
-                        <div class="pt-8 flex flex-wrap gap-4 font-mono text-sm">
-                            <button onclick="scrollToSection('work')" class="bg-emerald-600 hover:bg-emerald-500 text-black px-6 py-3 font-bold flex items-center gap-2 transition-all hover:translate-x-1 shadow-[0_0_20px_rgba(16,185,129,0.3)]">
+                        <div class="pt-6 md:pt-8 flex flex-col sm:flex-row flex-wrap gap-3 md:gap-4 font-mono text-sm">
+                            <button onclick="scrollToSection('work')" class="bg-emerald-600 hover:bg-emerald-500 text-black px-4 md:px-6 py-3 font-bold flex items-center justify-center gap-2 transition-all hover:translate-x-1 shadow-[0_0_20px_rgba(16,185,129,0.3)]">
                                 <span>./view_logs.sh</span> <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
                             </button>
-                            <a href="mailto:briva@argil.ai" class="border border-gray-700 hover:border-gray-500 text-gray-300 px-6 py-3 flex items-center gap-2 transition-all hover:bg-white/5 backdrop-blur-sm bg-black/30">
+                            <a href="mailto:briva@argil.ai" class="border border-gray-700 hover:border-gray-500 text-gray-300 px-4 md:px-6 py-3 flex items-center justify-center gap-2 transition-all hover:bg-white/5 backdrop-blur-sm bg-black/30">
                                 <span>ssh connect@me</span> <i data-lucide="terminal" class="w-4 h-4"></i>
                             </a>
                         </div>
@@ -170,14 +171,14 @@
                 </section>
 
                 <!-- WORK SECTION -->
-                <section id="work" class="py-20 section-spy">
-                    <span class="text-gray-600 italic font-mono text-sm block mb-1">// git log --pretty=format:"%h - %an, %ar : %s"</span>
-                    <div class="flex items-center gap-4 mb-12">
-                        <h2 class="text-3xl font-bold text-white font-mono"><span class="text-purple-500">function</span> getExperience()</h2>
+                <section id="work" class="py-12 md:py-20 section-spy">
+                    <span class="text-gray-600 italic font-mono text-xs md:text-sm block mb-1">// git log --pretty=format:"%h - %an, %ar : %s"</span>
+                    <div class="flex items-center gap-2 md:gap-4 mb-8 md:mb-12">
+                        <h2 class="text-xl md:text-3xl font-bold text-white font-mono"><span class="text-purple-500">function</span> getExperience()</h2>
                         <div class="h-px bg-gray-800 flex-grow"></div>
                     </div>
 
-                    <div class="ml-2 md:ml-8 space-y-12">
+                    <div class="ml-0 md:ml-8 space-y-8 md:space-y-12">
                         
                         <!-- Experience Item 1 -->
                         <div class="relative group pl-6 border-l border-dashed border-emerald-500/50 ml-2 pb-2">
@@ -320,11 +321,11 @@
                 </section>
 
                 <!-- STACK SECTION -->
-                <section id="stack" class="py-20 section-spy">
-                    <div class="grid lg:grid-cols-2 gap-12">
+                <section id="stack" class="py-12 md:py-20 section-spy">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
                         <div>
-                            <span class="text-gray-600 italic font-mono text-sm block mb-1">// System Configuration</span>
-                            <h2 class="text-3xl font-bold text-white font-mono mb-8">Hardware & Software</h2>
+                            <span class="text-gray-600 italic font-mono text-xs md:text-sm block mb-1">// System Configuration</span>
+                            <h2 class="text-xl md:text-3xl font-bold text-white font-mono mb-6 md:mb-8">Hardware & Software</h2>
                             
                             <div class="space-y-6 font-mono text-sm">
                                 <div>

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Brivael Le Pogam - Full Stack Founder & Engineer</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Lucide Icons -->
@@ -68,7 +69,47 @@
     <!-- MAIN APP CONTENT (Hidden initially) -->
     <div id="app-content" class="hidden opacity-0 transition-opacity duration-1000">
 
-        <!-- SIDEBAR NAVIGATION -->
+        <!-- MOBILE BURGER MENU BUTTON -->
+        <button id="burger-btn" class="fixed top-4 left-4 z-50 md:hidden p-2 bg-[#0a0a0a]/90 backdrop-blur border border-white/10 rounded-lg">
+            <i data-lucide="menu" class="w-5 h-5 text-emerald-400"></i>
+        </button>
+
+        <!-- MOBILE SLIDE-OUT MENU -->
+        <div id="mobile-menu" class="fixed inset-0 z-40 md:hidden transform -translate-x-full transition-transform duration-300">
+            <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="toggleMobileMenu()"></div>
+            <div class="relative w-64 h-full bg-[#0a0a0a] border-r border-white/10 p-6 flex flex-col">
+                <div class="flex items-center justify-between mb-8">
+                    <div class="text-emerald-500 font-bold text-xl">./B</div>
+                    <button onclick="toggleMobileMenu()" class="p-2 hover:bg-white/5 rounded-lg">
+                        <i data-lucide="x" class="w-5 h-5 text-gray-400"></i>
+                    </button>
+                </div>
+                <div class="flex flex-col gap-2 flex-grow">
+                    <button onclick="scrollToSection('home'); toggleMobileMenu();" class="nav-btn-mobile flex items-center gap-3 p-3 rounded-lg hover:bg-white/5 transition-colors text-emerald-400" data-target="home">
+                        <i data-lucide="terminal" class="w-5 h-5"></i>
+                        <span class="font-mono text-sm">home</span>
+                    </button>
+                    <button onclick="scrollToSection('work'); toggleMobileMenu();" class="nav-btn-mobile flex items-center gap-3 p-3 rounded-lg hover:bg-white/5 transition-colors text-gray-500" data-target="work">
+                        <i data-lucide="git-branch" class="w-5 h-5"></i>
+                        <span class="font-mono text-sm">experience</span>
+                    </button>
+                    <button onclick="scrollToSection('stack'); toggleMobileMenu();" class="nav-btn-mobile flex items-center gap-3 p-3 rounded-lg hover:bg-white/5 transition-colors text-gray-500" data-target="stack">
+                        <i data-lucide="database" class="w-5 h-5"></i>
+                        <span class="font-mono text-sm">stack</span>
+                    </button>
+                    <button onclick="scrollToSection('about'); toggleMobileMenu();" class="nav-btn-mobile flex items-center gap-3 p-3 rounded-lg hover:bg-white/5 transition-colors text-gray-500" data-target="about">
+                        <i data-lucide="layout" class="w-5 h-5"></i>
+                        <span class="font-mono text-sm">about</span>
+                    </button>
+                </div>
+                <div class="flex gap-4 pt-6 border-t border-white/10">
+                    <a href="https://github.com/briva" target="_blank" class="p-2 text-gray-500 hover:text-white transition-colors"><i data-lucide="github" class="w-5 h-5"></i></a>
+                    <a href="https://www.linkedin.com/in/brivael-le-pogam-bbbb7185/" target="_blank" class="p-2 text-gray-500 hover:text-white transition-colors"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- SIDEBAR NAVIGATION (Desktop only) -->
         <div class="fixed left-0 top-0 bottom-0 w-16 bg-[#0a0a0a]/90 backdrop-blur border-r border-white/5 z-40 hidden md:flex flex-col items-center py-6 justify-between">
             <div class="flex flex-col gap-6 w-full px-2">
                 <div class="text-emerald-500 font-bold text-xl text-center mb-4">./B</div>
@@ -86,44 +127,8 @@
             </div>
         </div>
 
-        <!-- MOBILE BOTTOM NAV (Visible only on small screens) -->
-        <div class="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50 md:hidden">
-            <div class="flex items-center gap-2 px-4 py-3 bg-[#0a0a0a]/90 backdrop-blur border border-white/10 rounded-full shadow-2xl">
-                <button onclick="scrollToSection('home')" class="nav-btn-mobile p-2 rounded-full hover:bg-white/10 transition-colors text-emerald-400" data-target="home"><i data-lucide="terminal" size="20"></i></button>
-                <button onclick="scrollToSection('work')" class="nav-btn-mobile p-2 rounded-full hover:bg-white/10 transition-colors text-gray-500" data-target="work"><i data-lucide="git-branch" size="20"></i></button>
-                <button onclick="scrollToSection('stack')" class="nav-btn-mobile p-2 rounded-full hover:bg-white/10 transition-colors text-gray-500" data-target="stack"><i data-lucide="database" size="20"></i></button>
-                <button onclick="scrollToSection('about')" class="nav-btn-mobile p-2 rounded-full hover:bg-white/10 transition-colors text-gray-500" data-target="about"><i data-lucide="layout" size="20"></i></button>
-                <div class="w-px h-6 bg-white/10 mx-1"></div>
-                <a href="https://github.com/briva" target="_blank" class="p-2 text-gray-500 hover:text-white transition-colors"><i data-lucide="github" size="18"></i></a>
-            </div>
-        </div>
-
         <!-- MAIN CONTENT WRAPPER -->
-        <main class="relative z-20 md:ml-16 mb-20 md:mb-0">
-            
-            <!-- TOP BAR -->
-            <div class="sticky top-0 z-30 bg-[#050505]/80 backdrop-blur border-b border-white/5 h-12 flex items-center px-4 md:px-6 text-xs font-mono">
-                <div class="flex items-center gap-1 text-gray-500 mr-2 md:mr-4">
-                    <i data-lucide="terminal" class="w-3 h-3"></i>
-                    <span class="hidden sm:inline">brivael@macbook-pro:~</span>
-                    <span class="sm:hidden">~</span>
-                </div>
-                <div class="flex h-full mt-2">
-                    <div class="px-2 md:px-4 bg-[#111]/50 border-t-2 border-emerald-500 text-gray-200 flex items-center gap-1 md:gap-2 h-10 rounded-t border-x border-white/5">
-                        <span class="text-blue-400">⚛</span> <span class="hidden sm:inline">profile.jsx</span><span class="sm:hidden">profile</span>
-                    </div>
-                    <div class="hidden sm:flex px-4 opacity-50 items-center gap-2 h-10 border-b border-white/5 hover:bg-white/5 cursor-pointer transition-colors" onclick="scrollToSection('work')">
-                        <span class="text-yellow-400">{}</span> history.json
-                    </div>
-                </div>
-                <div class="ml-auto flex items-center gap-2 md:gap-4 text-gray-600">
-                    <div class="flex items-center gap-1 md:gap-2">
-                        <div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
-                        <span class="hidden sm:inline">Server Online</span>
-                    </div>
-                    <span class="hidden md:inline">UTF-8</span>
-                </div>
-            </div>
+        <main class="relative z-20 md:ml-16">
 
             <div class="max-w-5xl mx-auto px-4 md:px-6 py-12 md:py-20">
                 
@@ -136,10 +141,10 @@
                     </div>
 
                     <div class="space-y-6">
-                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono tracking-widest uppercase backdrop-blur-sm">
+                        <a href="https://argil.ai" target="_blank" class="inline-flex items-center gap-2 px-3 py-1 rounded bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono tracking-widest uppercase backdrop-blur-sm hover:bg-emerald-500/20 transition-colors">
                             <i data-lucide="zap" class="w-3 h-3" fill="currentColor"></i>
-                            Signal detected: Y Combinator S24
-                        </div>
+                            Building Argil AI (YC S24)
+                        </a>
                         
                         <h1 class="text-4xl sm:text-5xl md:text-8xl font-bold tracking-tighter text-white leading-none mix-blend-difference">
                             <span class="text-gray-600 font-mono text-3xl sm:text-4xl md:text-6xl mr-2 md:mr-4 opacity-50">&gt;</span>
@@ -578,6 +583,14 @@
         // Start Grid
         initGrid();
         requestAnimationFrame(draw);
+
+        // --- MOBILE MENU ---
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('-translate-x-full');
+        }
+
+        document.getElementById('burger-btn').addEventListener('click', toggleMobileMenu);
 
     </script>
 </body>

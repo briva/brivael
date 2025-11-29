@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0a"/>
+      <stop offset="100%" style="stop-color:#050505"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10b981"/>
+      <stop offset="100%" style="stop-color:#059669"/>
+    </linearGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="32" height="32" rx="6" fill="url(#bg)"/>
+  <!-- Border glow -->
+  <rect x="1" y="1" width="30" height="30" rx="5" fill="none" stroke="#10b981" stroke-width="1" opacity="0.3"/>
+  <!-- Terminal prompt -->
+  <text x="4" y="21" font-family="monospace" font-size="10" fill="#10b981" opacity="0.6">&gt;</text>
+  <!-- B letter -->
+  <text x="12" y="23" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="bold" fill="url(#accent)">B</text>
+  <!-- Cursor blink -->
+  <rect x="25" y="10" width="3" height="14" fill="#10b981" opacity="0.8"/>
+</svg>

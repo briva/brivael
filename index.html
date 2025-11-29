@@ -86,8 +86,20 @@
             </div>
         </div>
 
+        <!-- MOBILE BOTTOM NAV (Visible only on small screens) -->
+        <div class="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50 md:hidden">
+            <div class="flex items-center gap-2 px-4 py-3 bg-[#0a0a0a]/90 backdrop-blur border border-white/10 rounded-full shadow-2xl">
+                <button onclick="scrollToSection('home')" class="nav-btn-mobile p-2 rounded-full hover:bg-white/10 transition-colors text-emerald-400" data-target="home"><i data-lucide="terminal" size="20"></i></button>
+                <button onclick="scrollToSection('work')" class="nav-btn-mobile p-2 rounded-full hover:bg-white/10 transition-colors text-gray-500" data-target="work"><i data-lucide="git-branch" size="20"></i></button>
+                <button onclick="scrollToSection('stack')" class="nav-btn-mobile p-2 rounded-full hover:bg-white/10 transition-colors text-gray-500" data-target="stack"><i data-lucide="database" size="20"></i></button>
+                <button onclick="scrollToSection('about')" class="nav-btn-mobile p-2 rounded-full hover:bg-white/10 transition-colors text-gray-500" data-target="about"><i data-lucide="layout" size="20"></i></button>
+                <div class="w-px h-6 bg-white/10 mx-1"></div>
+                <a href="https://github.com/briva" target="_blank" class="p-2 text-gray-500 hover:text-white transition-colors"><i data-lucide="github" size="18"></i></a>
+            </div>
+        </div>
+
         <!-- MAIN CONTENT WRAPPER -->
-        <main class="relative z-20 md:ml-16">
+        <main class="relative z-20 md:ml-16 mb-20 md:mb-0">
             
             <!-- TOP BAR -->
             <div class="sticky top-0 z-30 bg-[#050505]/80 backdrop-blur border-b border-white/5 h-12 flex items-center px-6 text-xs font-mono">
@@ -461,6 +473,7 @@
             // Active Section Logic (Intersection Observer)
             const sections = document.querySelectorAll('.section-spy');
             const navBtns = document.querySelectorAll('.nav-btn');
+            const navBtnsMobile = document.querySelectorAll('.nav-btn-mobile');
 
             let current = '';
             sections.forEach(section => {
@@ -470,14 +483,19 @@
                 }
             });
 
-            navBtns.forEach(btn => {
-                btn.classList.remove('text-emerald-400');
-                btn.classList.add('text-gray-500');
-                if (btn.dataset.target === current) {
-                    btn.classList.remove('text-gray-500');
-                    btn.classList.add('text-emerald-400');
-                }
-            });
+            const updateActiveBtn = (btns) => {
+                btns.forEach(btn => {
+                    btn.classList.remove('text-emerald-400');
+                    btn.classList.add('text-gray-500');
+                    if (btn.dataset.target === current) {
+                        btn.classList.remove('text-gray-500');
+                        btn.classList.add('text-emerald-400');
+                    }
+                });
+            };
+
+            updateActiveBtn(navBtns);
+            updateActiveBtn(navBtnsMobile);
         });
 
         // --- INTERACTIVE GRID BACKGROUND ---
